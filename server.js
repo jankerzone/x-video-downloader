@@ -21,8 +21,19 @@ app.get('/api/info', (req, res) => {
 
     console.log(`Fetching info for: ${url}`);
 
-    // Use cookies from Chrome to handle sensitive content / age-gated videos
-    const ytDlp = spawn('yt-dlp', ['-j', '--cookies-from-browser', 'chrome', url]);
+    // Use cookies from file to handle sensitive content / age-gated videos
+    // Check if cookies.txt exists, otherwise run without cookies
+    const fs = require('fs');
+    const cookiesPath = path.join(__dirname, 'cookies.txt');
+    const cookiesExist = fs.existsSync(cookiesPath);
+
+    const ytDlpArgs = ['-j'];
+    if (cookiesExist) {
+        ytDlpArgs.push('--cookies', cookiesPath);
+    }
+    ytDlpArgs.push(url);
+
+    const ytDlp = spawn('yt-dlp', ytDlpArgs);
     let stdoutData = '';
     let stderrData = '';
 

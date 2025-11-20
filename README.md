@@ -40,12 +40,23 @@ Sebelum menjalankan aplikasi ini, pastikan Anda telah menginstal:
     npm install
     ```
 
-3.  **Jalankan server**:
+4.  **(Opsional) Setup Cookies untuk Age-Restricted Content**:
+    ```bash
+    # Install browser extension "Get cookies.txt LOCALLY"
+    # Chrome: https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc
+    # Firefox: https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/
+    
+    # Login ke x.com di browser
+    # Klik extension icon → Export cookies untuk x.com
+    # Save sebagai cookies.txt di root folder project
+    ```
+
+5.  **Jalankan server**:
     ```bash
     node server.js
     ```
 
-4.  Buka browser dan akses `http://localhost:3000`.
+6.  Buka browser dan akses `http://localhost:3000`.
 
 ## ☁️ Deployment
 
