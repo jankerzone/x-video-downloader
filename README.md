@@ -54,14 +54,27 @@ Sebelum menjalankan aplikasi ini, pastikan Anda telah menginstal:
 2.  Add files: `git add .`
 3.  Commit: `git commit -m "Initial commit"`
 4.  Buat repository baru di GitHub.
-5.  Link remote: `git remote add origin https://github.com/USERNAME/REPO_NAME.git`
+5.  Link remote: `git remote add origin https://github.com/jankerzone/x-video-downloader.git`
 6.  Push: `git push -u origin main`
 
-### Vercel (Perhatian!)
-Aplikasi ini menggunakan `child_process` untuk memanggil binary `yt-dlp` eksternal. **Ini tidak akan berjalan secara langsung di Vercel Serverless Functions standar** karena:
-1.  Binary `yt-dlp` tidak tersedia di environment Vercel secara default.
-2.  Flag `--cookies-from-browser chrome` tidak akan berfungsi di server cloud karena tidak ada browser Chrome yang terinstall/login.
+### Railway.app ⭐ (Recommended)
+Railway sangat cocok untuk project ini karena support binary `yt-dlp` secara native.
 
-**Solusi Alternatif untuk Hosting:**
-- Gunakan VPS (DigitalOcean, Linode) atau layanan PaaS yang mendukung Docker/Binary seperti **Railway** atau **Render**.
-- Jika tetap ingin di Vercel, Anda perlu mengonfigurasi build step khusus untuk mengunduh binary `yt-dlp` dan menangani cookies secara manual (misalnya lewat file cookies.txt), namun ini memerlukan konfigurasi tingkat lanjut.
+**Langkah Deploy:**
+1.  Login ke [Railway.app](https://railway.app)
+2.  Klik **"New Project"** → **"Deploy from GitHub repo"**
+3.  Pilih repository `jankerzone/x-video-downloader`
+4.  Railway akan otomatis detect `nixpacks.toml` dan install `yt-dlp`
+5.  Tunggu build selesai (~2-3 menit)
+6.  Klik **"Generate Domain"** untuk mendapatkan URL publik
+7.  Done! Aplikasi siap digunakan.
+
+**Catatan:**
+- File `nixpacks.toml` sudah dikonfigurasi untuk install `yt-dlp` otomatis
+- Free tier Railway memberikan $5 credit/bulan (cukup untuk traffic ringan-sedang)
+- Aplikasi akan sleep setelah tidak digunakan (cold start ~5-10 detik)
+
+### Alternatif Lain
+- **Render.com**: Free tier tersedia, setup mirip Railway
+- **Fly.io**: Free tier generous, perlu konfigurasi Docker
+- **VPS (DigitalOcean/Linode)**: Kontrol penuh, mulai dari $4-6/bulan
