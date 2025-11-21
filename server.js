@@ -33,7 +33,12 @@ app.get('/api/info', (req, res) => {
     }
     ytDlpArgs.push(url);
 
-    const ytDlp = spawn('yt-dlp', ytDlpArgs);
+    // Check for local binary in Render environment
+    const localBinaryPath = path.join(__dirname, 'yt-dlp');
+    const binary = fs.existsSync(localBinaryPath) ? localBinaryPath : 'yt-dlp';
+
+    console.log(`Using yt-dlp binary at: ${binary}`);
+    const ytDlp = spawn(binary, ytDlpArgs);
     let stdoutData = '';
     let stderrData = '';
 
