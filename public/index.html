@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Video Downloader | Premium Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-instagram" style="margin-left: 10px;"></i>
+                <span style="margin-left: 10px;">Video Downloader</span>
+            </div>
+            <p class="subtitle">Extract high-quality videos from X and Instagram instantly.</p>
+        </header>
+
+        <main>
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-link input-icon"></i>
+                    <input type="text" id="urlInput" placeholder="Paste X.com or Instagram link here..."
+                        autocomplete="off">
+                </div>
+                <button id="downloadBtn">
+                    <span>Fetch Video</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div id="error-message" class="error-message hidden">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span id="error-text"></span>
+            </div>
+
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+                <p>Extracting video data...</p>
+            </div>
+
+            <div id="result" class="result-card hidden">
+                <div class="video-preview">
+                    <video id="videoPlayer" controls poster=""></video>
+                </div>
+                <div class="video-info">
+                    <h3 id="videoTitle">Video Title</h3>
+                    <div class="meta-info">
+                        <span id="videoDuration"><i class="fa-regular fa-clock"></i> 0:00</span>
+                        <span id="videoQuality"><i class="fa-solid fa-film"></i> HD</span>
+                    </div>
+                    <div class="action-buttons">
+                        <a id="downloadLink" href="#" target="_blank" class="btn-primary">
+                            <i class="fa-solid fa-download"></i> Download MP4
+                        </a>
+                        <button id="copyLinkBtn" class="btn-secondary">
+                            <i class="fa-regular fa-copy"></i> Copy Link
+                        </button>
+                    </div>
+
+                    <div class="formats-list">
+                        <h4>Available Qualities</h4>
+                        <div id="formatsContainer" class="formats-grid">
+                            <!-- Formats will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with Gemini-3 <i class="fa-solid fa-heart"></i> Jankerzone (v1.2)</p>
+        </footer>
+    </div>
+
+    <script src="script.js?v=1.2"></script>
+</body>
+
+</html>

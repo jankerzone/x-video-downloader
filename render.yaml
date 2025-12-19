@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: x-video-downloader
+    env: node
+    buildCommand: |
+      # Install yt-dlp
+      curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /opt/render/project/src/yt-dlp
+      chmod a+rx /opt/render/project/src/yt-dlp
+      # Install npm dependencies
+      npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: PATH
+        value: /opt/render/project/src:$PATH
